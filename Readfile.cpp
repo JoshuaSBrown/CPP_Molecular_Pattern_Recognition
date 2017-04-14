@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <stdio.h>
+#include <vector>
 
 using namespace std;
 
@@ -21,6 +22,11 @@ int main() {
 
   if(File.is_open())
   {
+    vector<string> atom;
+    vector<int> id;
+    vector<double> X;
+    vector<double> Y;
+    vector<double> Z;
     int lineNo = 0;
     while(!File.eof())
     {
@@ -28,23 +34,32 @@ int main() {
       //cout << line << endl;
       lineNo++;
       //cout << lineNo << endl;
-      if (lineNo > 2 && lineNo < 15){
+      if (lineNo > 2 && lineNo < 15)
+      {
         cout << line << endl;
         char str[100];
         char str1[100];
         int j;
         char atm[3];
-        double X[10];
-        double Y[10];
-        double Z[10];
         double tempX;
         double tempY;
         double tempZ;
         int i;
         sscanf(line.c_str(),"%s %d %s %s %d %lf %lf %lf",str, &i, atm, str1, &j, &tempX, &tempY, &tempZ);
-        printf (" %s -> %d -> %g -> %g -> %g\n", atm ,i,tempX,tempY,tempZ);
+        printf ("molecule: %s -> id: %d -> X: %g -> Y: %g -> Z: %g\n", atm ,i,tempX,tempY,tempZ);
+        atom.push_back (atm);
+        id.push_back (i);
+        X.push_back (tempX);
+        Y.push_back (tempY);
+        Z.push_back (tempZ);
 
       }
+    }
+    for (int i=0; i<atom.size(); i++){
+      cout << atom[i] << endl;
+    }
+    for (int i=0; i<id.size(); i++){
+      cout << id[i] << endl;
     }
   }
 
