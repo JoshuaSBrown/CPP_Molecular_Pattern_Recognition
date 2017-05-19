@@ -21,13 +21,17 @@ int main() {
     while(!File.eof())
     {
       getline(File,line);
+      //cout << line << endl;
+      //cout << line[0] << endl;
       lineNo++;
-      std::vector<int> bonds;
-
-      if (lineNo > 14 && lineNo < 26)
+      vector<int> bonds;
+      if (lineNo > 14 && lineNo < 26) //need to fix this, it also doesn't print the first atom (ID 1)
+      //if ((line[0] == 'C') and (line[5] == 'T'))  //I was trying this, since the format (i.e CONECT , etc) should be
+                                                    //the same for each pdf file, but the number of lines is not
       {
-        std::istringstream iss(line);
-        for(std::string line2; iss >> line2;){
+        istringstream iss(line);                    // do we need BOTH getline and istringstream?
+        for(string line2; iss >> line2;){
+          //cout << line2 << endl;
           if(line2 != "CONECT"){
             bonds.push_back(stoi(line2));
           }
@@ -36,6 +40,7 @@ int main() {
         atmV.at(bonds.at(0)).print();
         }
 
+      //if (line[0] == 'H'){
       if (lineNo > 2 && lineNo < 15)
       {
         char str[100];
