@@ -25,7 +25,8 @@ int main() {
       //cout << line[0] << endl;
       lineNo++;
       vector<int> bonds;
-      if (lineNo > 14 && lineNo < 26) //need to fix this, it also doesn't print the first atom (ID 1)
+      vector<string> neighbors;
+      if (lineNo > 14 && lineNo < 27)
       //if ((line[0] == 'C') and (line[5] == 'T'))  //I was trying this, since the format (i.e CONECT , etc) should be
                                                     //the same for each pdf file, but the number of lines is not
       {
@@ -34,14 +35,28 @@ int main() {
           //cout << line2 << endl;
           if(line2 != "CONECT"){
             bonds.push_back(stoi(line2));
+            //cout << stoi(line2) << endl;
           }
+        }
+
+        for (unsigned int i=0; i<bonds.size(); i++){
+          //cout << bonds[i] << endl;
+          for (unsigned int j=0; j<atmV.size(); j++){
+            if (atmV.at(j).id == bonds[i]){
+              //cout << atmV.at(j).atom_type << endl;
+              neighbors.push_back(atmV.at(j).atom_type);
+            }
+          }
+        }
+        for (unsigned int i=1; i<neighbors.size();i++){
+          cout << neighbors[i] << endl;
         }
         atmV.at(bonds.at(0)).bonds = bonds.size()-1;
         atmV.at(bonds.at(0)).print();
         }
 
       //if (line[0] == 'H'){
-      if (lineNo > 2 && lineNo < 15)
+      if (lineNo > 1 && lineNo < 15)
       {
         char str[100];
         char str1[100];
