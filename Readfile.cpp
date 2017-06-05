@@ -5,13 +5,16 @@
 #include <string>
 #include <stdio.h>
 #include <vector>
+#include <memory>
+
 #include "../CPP_AtomClass/AtomClass.hpp"
+#include "../CPP_MoleculeClass/MoleculeClass.hpp"
 
 using namespace std;
 
 int main() {
   ifstream File;
-  File.open("Examples/carbonmolecule2.pdb");
+  File.open("Examples/carbonmolecule.pdb");
   string line;
   std::vector<Atom> atmV;
 
@@ -25,7 +28,7 @@ int main() {
       //cout << line[0] << endl; //prints the first char of each line
 
       vector<int> bonds;  //stores the IDs of the connected atoms
-      vector<string> neighbors; //stores the atom types
+      vector<string> neighbors; //stores the atom types of the connected atoms
       if (line.size())
       {
         if ((line.at(0) == 'C') and (line.at(5) == 'T'))
@@ -53,10 +56,10 @@ int main() {
             }
           }
 
-          /*for (unsigned int i=1; i<neighbors.size();i++){
-            cout << neighbors[i] << endl; //prints the bonded atoms
-            //atmV.neighbors.push_back(neighbors[i]);   //??
-          }*/
+          for (unsigned int i=0; i<atmV.size();i++){
+              atmV.at(i).setConnections(bonds);
+          }
+
           atmV.at(bonds.at(0)-1).bonds = bonds.size()-1;
           atmV.at(bonds.at(0)-1).print();
         }
@@ -80,6 +83,8 @@ int main() {
       }
     }
   }
+  auto molecules = sortAtoms(atmV);
+  molecules.at(0).get()->print();
 
   File.close();
   return 0;
