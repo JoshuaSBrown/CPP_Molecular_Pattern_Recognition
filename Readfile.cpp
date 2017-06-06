@@ -20,7 +20,6 @@ int main() {
 
   if(File.is_open())
   {
-
     while(!File.eof())
     {
       getline(File,line);
@@ -78,13 +77,16 @@ int main() {
           some_string >> str >> i >> atm >> str1 >> j >> tempX >> tempY >> tempZ;
           Atom a = Atom(atm, i, tempX, tempY, tempZ);  //builds an atom with its type, ID and position.
           atmV.push_back(a);                       //inserts the atom in the vecor of atom structs
-          //a.print();
+          //cout << a << endl;
         }
       }
     }
+    auto molecules = sortAtoms(atmV);
+    //molecules.at(0).get()->print();
+    for (auto i=0; i<molecules.size(); i++){
+      //molecules.at(i)->print();
+    }
   }
-  auto molecules = sortAtoms(atmV);
-  molecules.at(0).get()->print();
 
   File.close();
   return 0;
