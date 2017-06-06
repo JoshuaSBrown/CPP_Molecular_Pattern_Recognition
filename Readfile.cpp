@@ -20,6 +20,7 @@ int main() {
 
   if(File.is_open())
   {
+    int atom_id = 0;
     while(!File.eof())
     {
       getline(File,line);
@@ -55,9 +56,8 @@ int main() {
             }
           }
 
-          for (unsigned int i=0; i<atmV.size();i++){
-              atmV.at(i).setConnections(bonds);
-          }
+              atmV.at(atom_id).setConnections(bonds);
+              atom_id++;
 
           atmV.at(bonds.at(0)-1).bonds = bonds.size()-1;
           atmV.at(bonds.at(0)-1).print();
@@ -84,7 +84,7 @@ int main() {
     auto molecules = sortAtoms(atmV);
     //molecules.at(0).get()->print();
     for (auto i=0; i<molecules.size(); i++){
-      //molecules.at(i)->print();
+      molecules.at(i).get()->print();
     }
   }
 
