@@ -77,7 +77,6 @@ int main() {
           some_string >> str >> i >> atm >> str1 >> j >> tempX >> tempY >> tempZ;
           Atom a = Atom(atm, i, tempX, tempY, tempZ);  //builds an atom with its type, ID and position.
           atmV.push_back(a);                       //inserts the atom in the vecor of atom structs
-          //cout << a << endl;
         }
       }
     }
