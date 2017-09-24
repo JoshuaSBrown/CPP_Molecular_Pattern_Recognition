@@ -14,7 +14,7 @@ using namespace std;
 
 int main() {
   ifstream File;
-  File.open("Examples/carbonmolecule.pdb");
+  File.open("Examples/messymolecule.pdb");
   string line;
   std::vector<Atom> atmV;
 
@@ -60,7 +60,6 @@ int main() {
               atom_id++;
 
           atmV.at(bonds.at(0)-1).bonds = bonds.size()-1;
-          atmV.at(bonds.at(0)-1).print();
         }
 
         else if (line.at(0) == 'H')
@@ -81,12 +80,38 @@ int main() {
       }
     }
     auto molecules = sortAtoms(atmV);
-    //molecules.at(0).get()->print();
-    for (auto i=0; i<molecules.size(); i++){
-      molecules.at(i).get()->print();
+    vector<vector<RigidFragmentMotif>> MolMotifs;
+    //cout << molecules.size() << endl;
+    for (unsigned long i = 0; i<molecules.size(); i++){
+      MolMotifs.push_back(molecules.at(i).getMotifs());
     }
+    // Determine if the same motif is present in different molecules
+    // Create a vector of unique non repeating motifs to simplify the quantum chemical calculations
+    vector<RigidFragmentMotif> Motifs;
+    vector<RigidFragmentMotif> UniqueMotifs;
+    for (unsigned long i = 0; i < MolMotifs.size(); i++){
+      for (unsigned long j = 0; j < MolMotifs.at(i).size(); j++){
+        // cout << MolMotifs.at(i).at(j) << endl;
+        Motifs.push_back(MolMotifs.at(i).at(j));
+      }
+    }
+    UniqueMotifs.push_back(Motifs.at(0));
+    for (unsigned long i = 0; i < Motifs.size() - 1; i++){
+      for (unsigned long j = 0; j < MolMotifs.at(i).size(); j++){
+      //cout << Motifs.at(i) << endl;
+        if (Motifs.at(i) != Motifs.at(j)){
+          UniqueMotifs.push_back(Motifs.at(i));
+        }
+        else{
+          cout << "No" << endl;
+        }
+      }
+    }
+    cout << UniqueMotifs.size() << endl;
+    for (unsigned long i = 0; i < UniqueMotifs.size(); i++){
+      cout << UniqueMotifs.at(i) << endl;
+    }
+    File.close();
+    return 0;
   }
-
-  File.close();
-  return 0;
 }
