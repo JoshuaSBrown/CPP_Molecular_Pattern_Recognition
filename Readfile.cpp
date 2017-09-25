@@ -14,7 +14,7 @@ using namespace std;
 
 int main() {
   ifstream File;
-  File.open("Examples/messymolecule.pdb");
+  File.open("Examples/CarbonMolecule5.pdb");
   string line;
   std::vector<Atom> atmV;
 
