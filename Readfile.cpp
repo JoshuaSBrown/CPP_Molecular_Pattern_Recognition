@@ -36,8 +36,8 @@ int main() {
           istringstream iss(line);
           for(string line2; iss >> line2;)
           {
-            //cout << line2 << endl;  //prints "CONECT" and connections
-            if(line2 != "CONECT")
+            cout << line2 << endl;  //prints "CONECT" and connections
+            if(line2 != "CONECT" && (!line2.at(0))) //add the ids of the connections only to the bonds vector
             {
               bonds.push_back(stoi(line2)); //inserts IDs of connections into the bonds vector
             }
@@ -45,7 +45,7 @@ int main() {
 
           for (unsigned int i=0; i<bonds.size(); i++)
           {
-            //cout << bonds[i] << endl; //prints content of bonds vector: IDs of atom and its connections
+            cout << bonds[i] << endl; //prints content of bonds vector: IDs of atom's connections
             for (unsigned int j=0; j<atmV.size(); j++)
             {
               if (atmV.at(j).id == bonds[i])
@@ -55,9 +55,13 @@ int main() {
               }
             }
           }
+          cout << "bonds: " << endl;
+          for (unsigned long i = 0; i < bonds.size(); i++){
+            cout << bonds.at(i) << endl;
+          }
+          atmV.at(atom_id).setConnections(bonds);
+          atom_id++;
 
-              atmV.at(atom_id).setConnections(bonds);
-              atom_id++;
 
           atmV.at(bonds.at(0)-1).bonds = bonds.size()-1;
         }
