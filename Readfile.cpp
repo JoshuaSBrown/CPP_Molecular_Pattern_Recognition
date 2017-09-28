@@ -33,19 +33,22 @@ int main() {
       {
         if ((line.at(0) == 'C') and (line.at(5) == 'T'))
         {
+          int atomCounter = 1;
           istringstream iss(line);
           for(string line2; iss >> line2;)
           {
-            cout << line2 << endl;  //prints "CONECT" and connections
-            if(line2 != "CONECT" && (!line2.at(0))) //add the ids of the connections only to the bonds vector
+            //cout << line2 << endl;  //prints "CONECT" and connections
+            if(line2 != "CONECT" && (line2.at(0) != atomCounter)) //add only the ids of the connections to the bonds vector
             {
+              //cout << "if staetement " << endl;
               bonds.push_back(stoi(line2)); //inserts IDs of connections into the bonds vector
+              atomCounter++;
             }
           }
 
           for (unsigned int i=0; i<bonds.size(); i++)
           {
-            cout << bonds[i] << endl; //prints content of bonds vector: IDs of atom's connections
+            // cout << bonds[i] << endl; //prints content of bonds vector: IDs of atom's connections
             for (unsigned int j=0; j<atmV.size(); j++)
             {
               if (atmV.at(j).id == bonds[i])
@@ -55,10 +58,8 @@ int main() {
               }
             }
           }
-          // cout << "bonds: " << endl;
-          // for (unsigned long i = 0; i < bonds.size(); i++){
-          //   cout << bonds.at(i) << endl;
-          // }
+          cout << "AllGoodSoFar58" << endl;
+
           atmV.at(atom_id).setConnections(bonds);
           atom_id++;
 
@@ -83,6 +84,7 @@ int main() {
         }
       }
     }
+    cout << "AllGoodSoFar83" << endl;
     auto molecules = sortAtoms(atmV); // get the molecules
     vector<RigidFragmentMotif> Motifs; // store all the motifs here
     vector<RigidFragmentMotif> UniqueMotifs;  // store unique motifs here
@@ -90,8 +92,15 @@ int main() {
     // loop through the molecules and get the motifs of each one
     for (unsigned long i = 0; i < molecules.size(); i++){
       auto tempMotif = molecules.at(i).getMotifs();
+      cout << tempMotif.at(i) << endl;
       Motifs.insert(Motifs.end(), tempMotif.begin(), tempMotif.end());
     }
+
+    cout << "Test to check motifs: " << endl;
+    for (unsigned long i = 0; i < Motifs.size(); i++){
+      cout << Motifs.at(i) << endl;
+    }
+
     // initialize the unique motifs vector with the first motif
     UniqueMotifs.push_back(Motifs.at(0));
 
