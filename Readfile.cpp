@@ -55,10 +55,10 @@ int main() {
               }
             }
           }
-          cout << "bonds: " << endl;
-          for (unsigned long i = 0; i < bonds.size(); i++){
-            cout << bonds.at(i) << endl;
-          }
+          // cout << "bonds: " << endl;
+          // for (unsigned long i = 0; i < bonds.size(); i++){
+          //   cout << bonds.at(i) << endl;
+          // }
           atmV.at(atom_id).setConnections(bonds);
           atom_id++;
 
