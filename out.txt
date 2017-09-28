@@ -1,121 +1,30 @@
-../CPP_SegmentClass/SegmentClass.cpp:89:8: warning: unused variable 'flag' [-Wunused-variable]
-  bool flag = true;
-       ^
-../CPP_SegmentClass/SegmentClass.cpp:90:12: warning: comparison of integers of different signs: 'int' and 'size_type' (aka 'unsigned long') [-Wsign-compare]
-  while(sum<eds.size()){
-        ~~~^~~~~~~~~~~
-../CPP_SegmentClass/SegmentClass.cpp:106:9: warning: comparison of integers of different signs: 'int' and 'size_type' (aka 'unsigned long') [-Wsign-compare]
-  if(sum!=eds.size()) return false;
-     ~~~^ ~~~~~~~~~~
-../CPP_SegmentClass/SegmentClass.cpp:230:1: warning: control may reach end of non-void function [-Wreturn-type]
-}
-^
-../CPP_SegmentClass/SegmentClass.cpp:257:34: warning: comparison of integers of different signs: 'int' and 'size_type' (aka 'unsigned long') [-Wsign-compare]
-  for(int branch_ind=0;branch_ind<branch_edgs.size();branch_ind++){
-                       ~~~~~~~~~~^~~~~~~~~~~~~~~~~~~
-../CPP_SegmentClass/SegmentClass.cpp:260:32: warning: comparison of integers of different signs: 'int' and 'size_type' (aka 'unsigned long') [-Wsign-compare]
-    for(int edge_ind=0;edge_ind<branch_edgs.at(branch_ind).size();edge_ind++){
-                       ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../CPP_SegmentClass/SegmentClass.cpp:344:41: warning: comparison of integers of different signs: 'int' and 'size_type' (aka 'unsigned long') [-Wsign-compare]
-      for( int seg_index2 = 1;seg_index2<temp_segs.size();seg_index2++){
-                              ~~~~~~~~~~^~~~~~~~~~~~~~~~~
-7 warnings generated.
-../CPP_BranchClass/BranchClass.cpp:406:33: warning: comparison of integers of different signs: 'size_t' (aka 'unsigned long') and 'int' [-Wsign-compare]
-        for(size_t index=0;index<this->mat.at(branch_ind).size();index++){ 
-                           ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../CPP_BranchClass/BranchClass.cpp:493:1: warning: control may reach end of non-void function [-Wreturn-type]
-}
-^
-../CPP_BranchClass/BranchClass.cpp:517:30: warning: comparison of integers of different signs: 'int' and 'size_type' (aka 'unsigned long') [-Wsign-compare]
-      for(int index2=2;index2<this->branch_vertices.at(branch_ind).at(index).size();index2++){
-                       ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../CPP_BranchClass/BranchClass.cpp:531:32: warning: comparison of integers of different signs: 'int' and 'size_type' (aka 'unsigned long') [-Wsign-compare]
-        for(int index2=2;index2<this->branch_vertices.at(branch_ind).at(index).size();index2++){
-                         ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../CPP_BranchClass/BranchClass.cpp:744:30: warning: comparison of integers of different signs: 'int' and 'size_type' (aka 'unsigned long') [-Wsign-compare]
-      for(int index2=2;index2<this->branch_vertices.at(branch_ind).at(index).size();index2++){
-                       ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../CPP_BranchClass/BranchClass.cpp:757:16: warning: comparison of integers of different signs: 'int' and 'size_type' (aka 'unsigned long') [-Wsign-compare]
-  for(int i=0;i<this->branch_vertices.size();i++){
-              ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../CPP_BranchClass/BranchClass.cpp:770:24: warning: comparison of integers of different signs: 'int' and 'size_type' (aka 'unsigned long') [-Wsign-compare]
-          for(int L=0;L<branch_vec.size();L++){
-                      ~^~~~~~~~~~~~~~~~~~
-../CPP_BranchClass/BranchClass.cpp:770:23: warning: variable 'found' is used uninitialized whenever 'for' loop exits because its condition is false [-Wsometimes-uninitialized]
-          for(int L=0;L<branch_vec.size();L++){
-                      ^~~~~~~~~~~~~~~~~~~
-../CPP_BranchClass/BranchClass.cpp:776:15: note: uninitialized use occurs here
-          if(!found) branch_vec.push_back(branch.at(j,k));
-              ^~~~~
-../CPP_BranchClass/BranchClass.cpp:770:23: note: remove the condition if it is always true
-          for(int L=0;L<branch_vec.size();L++){
-                      ^~~~~~~~~~~~~~~~~~~
-../CPP_BranchClass/BranchClass.cpp:769:21: note: initialize the variable 'found' to silence this warning
-          bool found;
-                    ^
-                     = false
-../CPP_BranchClass/BranchClass.cpp:951:22: warning: comparison of integers of different signs: 'int' and 'size_type' (aka 'unsigned long') [-Wsign-compare]
-    for(int ind=2;ind<temp_map.at(0).size();ind++){
-                  ~~~^~~~~~~~~~~~~~~~~~~~~~
-../CPP_BranchClass/BranchClass.cpp:997:32: warning: comparison of integers of different signs: 'int' and 'size_type' (aka 'unsigned long') [-Wsign-compare]
-    for(int edge_ind=0;edge_ind<edgs.size();edge_ind++){
-                       ~~~~~~~~^~~~~~~~~~~~
-../CPP_BranchClass/BranchClass.cpp:1028:30: warning: comparison of integers of different signs: 'int' and 'size_type' (aka 'unsigned long') [-Wsign-compare]
-  for(int edge_ind=0;edge_ind<edgs_branch_id.size();edge_ind++){
-                     ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~
-../CPP_BranchClass/BranchClass.cpp:1067:34: warning: comparison of integers of different signs: 'int' and 'size_type' (aka 'unsigned long') [-Wsign-compare]
-  for(int branch_ind=0;branch_ind<mat.size();branch_ind++){
-                       ~~~~~~~~~~^~~~~~~~~~~
-../CPP_BranchClass/BranchClass.cpp:1117:28: warning: comparison of integers of different signs: 'int' and 'size_type' (aka 'unsigned long') [-Wsign-compare]
-          for(int ind=0;ind<this->branch_vertices.at(other_branch).at(vert_ind).size();ind++){
-                        ~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../CPP_BranchClass/BranchClass.cpp:1127:34: warning: comparison of integers of different signs: 'int' and 'size_type' (aka 'unsigned long') [-Wsign-compare]
-            for(int ind_b=2;ind_b<row.size();ind_b++){
-                            ~~~~~^~~~~~~~~~~
-../CPP_BranchClass/BranchClass.cpp:1332:30: warning: comparison of integers of different signs: 'int' and 'size_type' (aka 'unsigned long') [-Wsign-compare]
-    for(int col_ind=2;col_ind<row->size();col_ind++){
-                      ~~~~~~~^~~~~~~~~~~~
-../CPP_BranchClass/BranchClass.cpp:1337:26: warning: comparison of integers of different signs: 'int' and 'size_type' (aka 'unsigned long') [-Wsign-compare]
-        for(int ind=2;ind<row->size();ind++){
-                      ~~~^~~~~~~~~~~~
-../CPP_BranchClass/BranchClass.cpp:1361:30: warning: comparison of integers of different signs: 'int' and 'size_type' (aka 'unsigned long') [-Wsign-compare]
-    for(int col_ind=2;col_ind<row->size();col_ind++){
-                      ~~~~~~~^~~~~~~~~~~~
-../CPP_BranchClass/BranchClass.cpp:3121:1: warning: control may reach end of non-void function [-Wreturn-type]
-}
-^
-18 warnings generated.
-../CPP_RigidFragmentMotif/RigidFragmentMotif.cpp:64:11: warning: comparison of integers of different signs: 'int' and 'size_type' (aka 'unsigned long') [-Wsign-compare]
-    if(ind==this->atm_types.size()){
-       ~~~^ ~~~~~~~~~~~~~~~~~~~~~~
-../CPP_RigidFragmentMotif/RigidFragmentMotif.cpp:98:11: warning: comparison of integers of different signs: 'int' and 'size_type' (aka 'unsigned long') [-Wsign-compare]
-    if(ind==this->atm_types.size()){
-       ~~~^ ~~~~~~~~~~~~~~~~~~~~~~
-../CPP_RigidFragmentMotif/RigidFragmentMotif.cpp:121:20: warning: comparison of integers of different signs: 'int' and 'size_type' (aka 'unsigned long') [-Wsign-compare]
-  for(int ind=0;ind<this->atm_types.size();ind++){
-                ~~~^~~~~~~~~~~~~~~~~~~~~~~
-../CPP_RigidFragmentMotif/RigidFragmentMotif.cpp:144:20: warning: comparison of integers of different signs: 'int' and 'size_type' (aka 'unsigned long') [-Wsign-compare]
-  for(int ind=1;ind<this->atm_types.size();ind++){
-                ~~~^~~~~~~~~~~~~~~~~~~~~~~
-../CPP_RigidFragmentMotif/RigidFragmentMotif.cpp:162:7: warning: unused variable 'num_atoms' [-Wunused-variable]
-  int num_atoms = this->size();
-      ^
-../CPP_RigidFragmentMotif/RigidFragmentMotif.cpp:338:28: warning: comparison of integers of different signs: 'int' and 'size_type' (aka 'unsigned long') [-Wsign-compare]
-  for(int atm_ind=0;atm_ind<starting_atms2.size();atm_ind++){ 
-                    ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~
-../CPP_RigidFragmentMotif/RigidFragmentMotif.cpp:360:34: warning: comparison of integers of different signs: 'int' and 'size_type' (aka 'unsigned long') [-Wsign-compare]
-      for(int comb_ind=0;comb_ind<comb_br_ids2.size();comb_ind++){ 
-                         ~~~~~~~~^~~~~~~~~~~~~~~~~~~~
-../CPP_RigidFragmentMotif/RigidFragmentMotif.cpp:363:40: warning: comparison of integers of different signs: 'int' and 'size_type' (aka 'unsigned long') [-Wsign-compare]
-        for(int branch_ind=0;branch_ind<comb_br_ids2.at(comb_ind).size();branch_ind++){ 
-                             ~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../CPP_RigidFragmentMotif/RigidFragmentMotif.cpp:478:22: warning: comparison of integers of different signs: 'int' and 'size_type' (aka 'unsigned long') [-Wsign-compare]
-  for(int ind1=2;ind1<vertex_row1.size();ind1++){
-                 ~~~~^~~~~~~~~~~~~~~~~~~
-../CPP_RigidFragmentMotif/RigidFragmentMotif.cpp:483:14: warning: comparison of integers of different signs: 'int' and 'size_type' (aka 'unsigned long') [-Wsign-compare]
-    for(;elem<branch_vec1.size();elem++){
-         ~~~~^~~~~~~~~~~~~~~~~~~
-../CPP_RigidFragmentMotif/RigidFragmentMotif.cpp:500:26: warning: comparison of integers of different signs: 'int' and 'size_type' (aka 'unsigned long') [-Wsign-compare]
-    for(int ind2 = 2;ind2<vertex_row2.size();ind2++){
-                     ~~~~^~~~~~~~~~~~~~~~~~~
-11 warnings generated.
+auto molecules = sortAtoms(atmV); // get the molecules
+    vector<RigidFragmentMotif> Motifs; // store all the motifs here
+    vector<RigidFragmentMotif> UniqueMotifs;  // store unique motifs here
+
+    // loop through the molecules and get the motifs of each one
+    for (unsigned long i = 0; i < molecules.size(); i++){
+      Motifs.push_back(molecules.at(i).getMotifs());
+    }
+    // initialize the unique motifs vector with the first motif
+    UniqueMotifs.push_back(Motifs.at(0));
+
+    // cycle through the vector containing all the motifs starting at 1 because we already
+    // made element 0 a unique motif
+    for (unsigned long i = 1; i < Motifs.size(); i++){
+      // initialize a local constant that determines if the motif is unique or not
+      bool unique = true;
+
+      // cycle through the motifs that are already stored in the unique motif vector.
+      for (unsigned long j = 0; j < UniqueMotifs.size(); j++){
+         // if motif(i) is already stored as a unique motif than motif(i) is not unique so break out of the loop.
+          if (Motifs.at(i) == UniqueMotifs.at(j)){
+           unique = false;
+           break;
+           }
+       }
+     // if the motif was found to be unique than add it to the unique motif vector.
+     if(unique){
+          UniqueMotifs.push_back(Motifs.at(i));
+      }
+    }

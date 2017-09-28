@@ -14,7 +14,7 @@ using namespace std;
 
 int main() {
   ifstream File;
-  File.open("Examples/CarbonMolecule5.pdb");
+  File.open("Examples/carbonmolecule.pdb");
   string line;
   std::vector<Atom> atmV;
 
@@ -79,38 +79,42 @@ int main() {
         }
       }
     }
-    auto molecules = sortAtoms(atmV);
-    vector<vector<RigidFragmentMotif>> MolMotifs;
-    //cout << molecules.size() << endl;
-    for (unsigned long i = 0; i<molecules.size(); i++){
-      MolMotifs.push_back(molecules.at(i).getMotifs());
+    auto molecules = sortAtoms(atmV); // get the molecules
+    vector<RigidFragmentMotif> Motifs; // store all the motifs here
+    vector<RigidFragmentMotif> UniqueMotifs;  // store unique motifs here
+
+    // loop through the molecules and get the motifs of each one
+    for (unsigned long i = 0; i < molecules.size(); i++){
+      auto tempMotif = molecules.at(i).getMotifs();
+      Motifs.insert(Motifs.end(), tempMotif.begin(), tempMotif.end());
     }
-    // Determine if the same motif is present in different molecules
-    // Create a vector of unique non repeating motifs to simplify the quantum chemical calculations
-    vector<RigidFragmentMotif> Motifs;
-    vector<RigidFragmentMotif> UniqueMotifs;
-    for (unsigned long i = 0; i < MolMotifs.size(); i++){
-      for (unsigned long j = 0; j < MolMotifs.at(i).size(); j++){
-        // cout << MolMotifs.at(i).at(j) << endl;
-        Motifs.push_back(MolMotifs.at(i).at(j));
-      }
-    }
+    // initialize the unique motifs vector with the first motif
     UniqueMotifs.push_back(Motifs.at(0));
-    for (unsigned long i = 0; i < Motifs.size() - 1; i++){
-      for (unsigned long j = 0; j < MolMotifs.at(i).size(); j++){
-      //cout << Motifs.at(i) << endl;
-        if (Motifs.at(i) != Motifs.at(j)){
+
+    // cycle through the vector containing all the motifs starting at 1 because we already
+    // made element 0 a unique motif
+    for (unsigned long i = 1; i < Motifs.size(); i++){
+      // initialize a local constant that determines if the motif is unique or not
+      bool unique = true;
+
+      // cycle through the motifs that are already stored in the unique motif vector.
+      for (unsigned long j = 0; j < UniqueMotifs.size(); j++){
+         // if motif(i) is already stored as a unique motif than motif(i) is not unique so break out of the loop.
+          if (Motifs.at(i) == UniqueMotifs.at(j)){
+           unique = false;
+           break;
+           }
+       }
+     // if the motif was found to be unique than add it to the unique motif vector.
+     if(unique){
           UniqueMotifs.push_back(Motifs.at(i));
-        }
-        else{
-          cout << "No" << endl;
-        }
+      }
+
+      for (unsigned long i = 0; i < UniqueMotifs.size(); i++){
+        cout << UniqueMotifs.at(i) << endl;
       }
     }
-    cout << UniqueMotifs.size() << endl;
-    for (unsigned long i = 0; i < UniqueMotifs.size(); i++){
-      cout << UniqueMotifs.at(i) << endl;
-    }
+
     File.close();
     return 0;
   }
