@@ -33,17 +33,26 @@ int main() {
       {
         if ((line.at(0) == 'C') and (line.at(5) == 'T'))
         {
-          int atomCounter = 1;
           istringstream iss(line);
+          // cout << "line: " << line << endl;
+          // cout << "line at 0: " << line.at(0) << endl;
+          vector<int> idsList;
           for(string line2; iss >> line2;)
           {
-            //cout << line2 << endl;  //prints "CONECT" and connections
-            if(line2 != "CONECT" && (line2.at(0) != atomCounter)) //add only the ids of the connections to the bonds vector
+            // cout << "line inside for loop: " << line << endl;
+            // cout << "line2: " << line2 << endl;  //prints "CONECT" and connections
+            // cout << "line at 0: "<<line2.at(0) <<  endl;
+            if(line2 != "CONECT") //add only the ids of the connections to the bonds vector
             {
+              idsList.push_back(stoi(line2));
               //cout << "if staetement " << endl;
-              bonds.push_back(stoi(line2)); //inserts IDs of connections into the bonds vector
-              atomCounter++;
+              //bonds.push_back(stoi(line2)); //inserts IDs of connections into the bonds vector
             }
+          }
+
+          for (unsigned long i = 1; i < idsList.size(); i++){
+            //cout << "idsList: " << idsList.at(i) << endl;
+            bonds.push_back(idsList.at(i));
           }
 
           for (unsigned int i=0; i<bonds.size(); i++)
@@ -58,7 +67,7 @@ int main() {
               }
             }
           }
-          cout << "AllGoodSoFar58" << endl;
+          cout << "AllGoodSoFar1" << endl;
 
           atmV.at(atom_id).setConnections(bonds);
           atom_id++;
@@ -84,19 +93,23 @@ int main() {
         }
       }
     }
-    cout << "AllGoodSoFar83" << endl;
+    cout << "AllGoodSoFar2" << endl;
     auto molecules = sortAtoms(atmV); // get the molecules
+    cout << "AllGoodSoFar3" << endl;
     vector<RigidFragmentMotif> Motifs; // store all the motifs here
     vector<RigidFragmentMotif> UniqueMotifs;  // store unique motifs here
 
     // loop through the molecules and get the motifs of each one
     for (unsigned long i = 0; i < molecules.size(); i++){
+      cout << "inside for loop" << endl;
       auto tempMotif = molecules.at(i).getMotifs();
-      cout << tempMotif.at(i) << endl;
+      cout << "after getMotifs " << endl;
+      cout << "tempMotif: " << tempMotif.at(i) << endl;
       Motifs.insert(Motifs.end(), tempMotif.begin(), tempMotif.end());
     }
 
     cout << "Test to check motifs: " << endl;
+    cout << "Motifs.size(): " << Motifs.size() << endl;
     for (unsigned long i = 0; i < Motifs.size(); i++){
       cout << Motifs.at(i) << endl;
     }
